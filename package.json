@@ -1,0 +1,43 @@
+{
+  "name": "roosevelt-uglify",
+  "description": "UglifyJS support for Roosevelt MVC web framework",
+  "author": "Troy Coutu <autre31415@gmail.com>",
+  "version": "0.1.0",
+  "homepage": "https://github.com/rooseveltframework/roosevelt-uglify",
+  "license": "CC-BY-4.0",
+  "main": "roosevelt-uglify.js",
+  "readmeFilename": "README.md",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "uglify-js": "3.1.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.0",
+    "lint-staged": "^4.0.0",
+    "husky": "^0.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rooseveltframework/roosevelt-uglify.git"
+  },
+  "keywords": [
+    "roosevelt.js",
+    "uglify",
+    "node.js",
+    "minifier",
+    "minification"
+  ],
+  "preferGlobal": true,
+  "_from": "roosevelt-uglify@*",
+  "gitHead": "",
+  "scripts": {
+    "test": "standard roosevelt-uglify.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "standard"
+  }
+}
