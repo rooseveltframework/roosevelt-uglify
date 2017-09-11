@@ -1,4 +1,4 @@
-roosevelt-closure
+roosevelt-uglify
 ===
 
 [UglifyJS](https://github.com/mishoo/UglifyJS2) support for [Roosevelt MVC web framework](https://github.com/rooseveltframework/roosevelt).
