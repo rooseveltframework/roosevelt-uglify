@@ -1,5 +1,6 @@
 roosevelt-uglify
 ===
+[![npm](https://img.shields.io/npm/v/roosevelt-uglify.svg)](https://www.npmjs.com/package/roosevelt-uglify)
 
 [UglifyJS](https://github.com/mishoo/UglifyJS2) support for [Roosevelt MVC web framework](https://github.com/rooseveltframework/roosevelt).
 
