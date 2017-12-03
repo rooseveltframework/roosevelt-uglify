@@ -2,7 +2,7 @@
   "name": "roosevelt-uglify",
   "description": "UglifyJS support for Roosevelt MVC web framework",
   "author": "Troy Coutu <autre31415@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/rooseveltframework/roosevelt-uglify",
   "license": "CC-BY-4.0",
   "main": "roosevelt-uglify.js",
