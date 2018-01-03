@@ -4,18 +4,6 @@ roosevelt-uglify
 [![Greenkeeper badge](https://badges.greenkeeper.io/rooseveltframework/roosevelt-uglify.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/rooseveltframework/roosevelt-uglify.svg?branch=master)](https://travis-ci.org/rooseveltframework/roosevelt-uglify) [![npm](https://img.shields.io/npm/v/roosevelt-uglify.svg)](https://www.npmjs.com/package/roosevelt-uglify)
 
-[UglifyJS](https://github.com/mishoo/UglifyJS2) support for [Roosevelt MVC web framework](https://github.com/rooseveltframework/roosevelt).
-
-# Usage
-
-Declare the `roosevelt-uglify` module as a dependency in the package.json of your roosevelt app.
-
-Then declare your JS compiler by passing it as a param to Roosevelt:
-
-```js
-"rooseveltConfig": {
-  "jsCompiler": {nodeModule: "roosevelt-uglify", params: {someParam: someValue}}
-}
-```
+[UglifyJS](https://github.com/mishoo/UglifyJS2) middleware for [Roosevelt MVC web framework](https://github.com/rooseveltframework/roosevelt). See Roosevelt JS compiler docs for usage.
 
 See the [UglifyJS API docs](https://github.com/mishoo/UglifyJS2#api-reference) for documentation on available params.
