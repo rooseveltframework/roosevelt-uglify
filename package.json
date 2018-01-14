@@ -12,7 +12,7 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "uglify-js": "3.3.6"
+    "uglify-js": "3.3.7"
   },
   "devDependencies": {
     "standard": "^10.0.0",
