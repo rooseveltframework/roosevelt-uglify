@@ -7,7 +7,7 @@ const util = require('util')
 
 module.exports = function (params, method) {
   const appDir = params.appDir
-  let appJSContents = `const app = require('../../../node_modules/roosevelt')(${util.inspect(params, {depth: 5})})\n\n`
+  let appJSContents = `const app = require('roosevelt')(${util.inspect(params, {depth: 5})})\n\n`
   let defaultMessages = 'process.send(app.expressApp.get(\'params\'))'
 
   if (method) {
