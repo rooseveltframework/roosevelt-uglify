@@ -65,7 +65,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       generateFolderStructure: true,
       js: {
         compiler: {
-          nodeModule: 'roosevelt-uglify',
+          nodeModule: '../../roosevelt-uglify',
           showWarnings: false,
           params: {
           }
@@ -98,7 +98,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       generateFolderStructure: true,
       js: {
         compiler: {
-          nodeModule: 'roosevelt-uglify',
+          nodeModule: '../../roosevelt-uglify',
           showWarnings: false,
           params: {
             compress: false
@@ -127,7 +127,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       generateFolderStructure: true,
       js: {
         compiler: {
-          nodeModule: 'roosevelt-uglify',
+          nodeModule: '../../roosevelt-uglify',
           showWarnings: true,
           params: {
           }
