@@ -7,6 +7,7 @@ const path = require('path')
 const cleanupTestApp = require('../util/cleanupTestApp')
 const generateTestApp = require('../util/generateTestApp')
 const fork = require('child_process').fork
+const uglify = require('uglify-js')
 
 describe('Roosevelt UglifyJS Section Test', function () {
   // location of the test app
@@ -14,9 +15,6 @@ describe('Roosevelt UglifyJS Section Test', function () {
 
   // sample JS source string to test the compiler with that has a unusedvar
   const test1 = `function f(){ var u; return 2 + 3; }`
-
-  // JS string that represents the js file that was compiled with no params set
-  const noParamResult = 'function f(){return 5}'
 
   // path to where the file with the JS source string written on it will be
   const pathOfStaticJS = path.join(appDir, 'statics', 'js', 'a.js')
@@ -43,6 +41,9 @@ describe('Roosevelt UglifyJS Section Test', function () {
   })
 
   it('should make a compiled js file that is the same as the compiled js string I have stored in the noParamResult variable', function (done) {
+    // JS string that represents the js file that was compiled with no params set
+    const noParamResult = uglify.minify(test1)
+
     // generate the app
     generateTestApp({
       appDir: appDir,
@@ -68,14 +69,18 @@ describe('Roosevelt UglifyJS Section Test', function () {
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', () => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
-      let test = contentsOfCompiledJS === noParamResult
+      let test = contentsOfCompiledJS === noParamResult.code
       assert.equal(test, true)
       testApp.kill()
       done()
     })
   })
 
-  it('should make a different compiled js file if a param is passed to UglifyJS', function (done) {
+  it('should make the same compiled js file if a param is passed to Roosevelt-UglifyJS as to if the file and params were passed to UglifyJS', function (done) {
+    // JS string that represents the js file that was compiled with the compress set to false
+    const options = {compress: false}
+    const compressResult = uglify.minify(test1, options)
+
     // generate the app
     generateTestApp({
       appDir: appDir,
@@ -97,8 +102,8 @@ describe('Roosevelt UglifyJS Section Test', function () {
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', (app) => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
-      let test = contentsOfCompiledJS === noParamResult
-      assert.equal(test, false)
+      let test = contentsOfCompiledJS === compressResult.code
+      assert.equal(test, true)
       testApp.kill()
       done()
     })
