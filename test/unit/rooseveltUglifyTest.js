@@ -12,14 +12,11 @@ describe('Roosevelt UglifyJS Section Test', function () {
   // location of the test app
   const appDir = path.join(__dirname, '../app/uglifyJSTest')
 
-  // sample JS source string to test the compiler with
-  const test1 = `var a = function() { return 1 + 2}`
-
   // sample JS source string to test the compiler with that has a unusedvar
-  const test2 = `function f(){ var u; return 2 + 3; }`
+  const test1 = `function f(){ var u; return 2 + 3; }`
 
   // JS string that represents the js file that was compiled with no params set
-  const noParamResult = 'var a=function(){return 3};'
+  const noParamResult = 'function f(){return 5}'
 
   // path to where the file with the JS source string written on it will be
   const pathOfStaticJS = path.join(appDir, 'statics', 'js', 'a.js')
@@ -27,24 +24,11 @@ describe('Roosevelt UglifyJS Section Test', function () {
   // path to where the compiled js file will be written to
   const pathOfcompiledJS = path.join(appDir, 'statics', '.build', 'js', 'a.js')
 
-  // variable to keep track of what test the program is on
-  let testCount = 0
-
   beforeEach(function () {
-    // increment the testCount
-    testCount++
-    // check to see that the suite has not passed the 2nd test yet
-    if (testCount < 2) {
-      // start by generating a statics folder in the roosevelt test app directory
-      fse.ensureDirSync(path.join(appDir, 'statics', 'js'))
-      // generate sample js files in statics with JS source string from test1
-      fs.writeFileSync(pathOfStaticJS, test1)
-    } else {
-      // start by generating a statics folder in the roosevelt test app directory
-      fse.ensureDirSync(path.join(appDir, 'statics', 'js'))
-      // generate sample js files in statics with JS source string from test2
-      fs.writeFileSync(pathOfStaticJS, test2)
-    }
+    // start by generating a statics folder in the roosevelt test app directory
+    fse.ensureDirSync(path.join(appDir, 'statics', 'js'))
+    // generate sample js files in statics with JS source string from test1
+    fs.writeFileSync(pathOfStaticJS, test1)
   })
 
   afterEach(function (done) {
@@ -149,6 +133,40 @@ describe('Roosevelt UglifyJS Section Test', function () {
     // It should not be able to complete initialization, meaning if it does, we have an error in the error handling
     testApp.on('message', (params) => {
       assert.fail('app was able to complete initialize and did not throw a warnings error')
+      testApp.kill()
+      done()
+    })
+  })
+
+  it('should not give a "warning" string since the showWarning param is false', function (done) {
+    // generate the app
+    generateTestApp({
+      appDir: appDir,
+      generateFolderStructure: true,
+      js: {
+        compiler: {
+          nodeModule: '../../roosevelt-uglify',
+          showWarnings: false,
+          params: {
+          }
+        }
+      }
+    }, 'initServer')
+
+    // fork the app and run it as a child process
+    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+
+    // an error should not be thrown by the testApp
+    testApp.stderr.on('data', (data) => {
+      if (data.toString().includes('Warnings')) {
+        assert.fail('app had thrown an error when showWarnings was set to false')
+        testApp.kill()
+        done()
+      }
+    })
+
+    // It should be able to complete initialization, meaning that the test had succeeded if it has completed initialization
+    testApp.on('message', (params) => {
       testApp.kill()
       done()
     })
