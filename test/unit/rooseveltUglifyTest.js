@@ -40,7 +40,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     })
   })
 
-  it('should make a compiled js file that is the same as the compiled js string I have stored in the noParamResult variable', function (done) {
+  it('should make a compiled js file that is the same as the compiled js output that we get from using UglifyJS itself', function (done) {
     // JS string that represents the js file that was compiled with no params set
     const noParamResult = uglify.minify(test1)
 
