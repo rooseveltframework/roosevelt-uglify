@@ -176,4 +176,45 @@ describe('Roosevelt UglifyJS Section Test', function () {
       done()
     })
   })
+
+  it('should give a "error" string if there is a massive problem with the code that the program is trying to parse (typo)', function (done) {
+    // JS source script that has a error in it (typo)
+    const errorTest = `function f(){ returbn 2 + 3; }`
+    // path of where the file with this script will be located
+    const pathOfErrorStaticJS = path.join(appDir, 'statics', 'js', 'b.js')
+    // make this file before the test
+    fs.writeFileSync(pathOfErrorStaticJS, errorTest)
+
+    // generate the app
+    generateTestApp({
+      appDir: appDir,
+      generateFolderStructure: true,
+      js: {
+        compiler: {
+          nodeModule: '../../roosevelt-uglify',
+          showWarnings: false,
+          params: {
+          }
+        }
+      }
+    }, 'initServer')
+
+    // fork the app and run it as a child process
+    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+
+    // an error should be thrown by the testApp
+    testApp.stderr.on('data', (data) => {
+      if (data.toString().includes('failed')) {
+        testApp.kill()
+        done()
+      }
+    })
+
+    // It should not be able to complete initialization, meaning that the test had failed if it has completed initialization
+    testApp.on('message', (params) => {
+      assert.fail('app had somehow complete initialization even when a js file has a typo error in it')
+      testApp.kill()
+      done()
+    })
+  })
 })
