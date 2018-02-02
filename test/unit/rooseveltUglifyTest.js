@@ -211,7 +211,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
 
     // an error should be thrown by the testApp
     testApp.stderr.on('data', (data) => {
-      if (data.toString().includes('failed')) {
+      if (data.toString().includes('failed to parse')) {
         testApp.kill()
         done()
       }
