@@ -102,10 +102,6 @@ describe('Roosevelt UglifyJS Section Test', function () {
     // fork the app and run it as a child process
     const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
 
-    testApp.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', (app) => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
