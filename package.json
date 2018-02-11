@@ -12,8 +12,8 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "uglify-js": "~3.3.9",
-    "fs-extra": "~5.0.0"
+    "uglify-js": "3.3.10",
+    "fs-extra": "5.0.0"
   },
   "devDependencies": {
     "husky": "~0.14.0",
