@@ -5,11 +5,14 @@ const path = require('path')
 module.exports = {
   parse: function (app, fileName) {
     let code = fs.readFileSync(path.join(app.get('jsPath'), fileName), 'utf-8')
-    let options = JSON.parse(JSON.stringify(app.get('params').js.compiler.params)) || {}
+    let options = app.get('params').js.compiler.params || {}
     let result
     let newJs
     let errors
     let warnings
+
+    // make a copy of the params so the originals aren't modified
+    options = JSON.parse(JSON.stringify(options))
 
     // port showWarnings param over to uglify params
     if (app.get('params').js.compiler.showWarnings) {
