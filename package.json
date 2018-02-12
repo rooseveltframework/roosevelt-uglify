@@ -1,14 +1,19 @@
 {
   "name": "roosevelt-uglify",
   "description": "UglifyJS support for Roosevelt MVC web framework",
-  "author": "Troy Coutu <autre31415@gmail.com>",
-  "version": "0.2.1",
+  "author": "Roosevelt Framework Team <rooseveltframework@gmail.com>",
+  "contributors": [
+    "Eric Newport <kethinov@gmail.com>",
+    "Troy Coutu <autre31415@gmail.com>",
+    "Alexander J. Lallier <alexanderlallier@aol.com>"
+  ],
+  "version": "0.2.2",
   "homepage": "https://github.com/rooseveltframework/roosevelt-uglify",
   "license": "CC-BY-4.0",
   "main": "roosevelt-uglify.js",
   "readmeFilename": "README.md",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "engineStrict": true,
   "dependencies": {
