@@ -17,7 +17,7 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "uglify-js": "3.3.21",
+    "uglify-js": "3.3.22",
     "fs-extra": "5.0.0"
   },
   "devDependencies": {
