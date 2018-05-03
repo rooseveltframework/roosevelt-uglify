@@ -45,10 +45,9 @@
   "gitHead": "",
   "scripts": {
     "coverage": "nyc --reporter=html --reporter=text mocha --timeout 25000 --recursive test/unit",
-    "coveralls": "nyc --reporter=lcov mocha --timeout 40000 --recursive test/unit && cat ./coverage/lcov.info | coveralls",
-    "test": " mocha --timeout 5000 --recursive test/unit && npm run standard",
+    "lint": "standard",
     "precommit": "lint-staged",
-    "standard": "standard"
+    "test": " mocha --timeout 5000 --recursive test/unit && npm run lint"
   },
   "lint-staged": {
     "*.js": "standard"
