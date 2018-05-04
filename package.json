@@ -44,11 +44,10 @@
   "_from": "roosevelt-uglify@*",
   "gitHead": "",
   "scripts": {
-    "coverage": "nyc --reporter=html --reporter=text mocha --timeout 25000 --recursive test/unit",
-    "coveralls": "nyc --reporter=lcov mocha --timeout 40000 --recursive test/unit && cat ./coverage/lcov.info | coveralls",
-    "test": " mocha --timeout 5000 --recursive test/unit && npm run standard",
+    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --timeout 25000 --recursive test/unit",
+    "lint": "standard",
     "precommit": "lint-staged",
-    "standard": "standard"
+    "test": "npm run lint && mocha --timeout 25000 --recursive test/unit"
   },
   "lint-staged": {
     "*.js": "standard"
