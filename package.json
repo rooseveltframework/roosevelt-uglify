@@ -47,7 +47,7 @@
     "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --timeout 25000 --recursive test/unit",
     "lint": "standard",
     "precommit": "lint-staged",
-    "test": " mocha --timeout 5000 --recursive test/unit && npm run lint"
+    "test": "npm run lint && mocha --timeout 25000 --recursive test/unit"
   },
   "lint-staged": {
     "*.js": "standard"
