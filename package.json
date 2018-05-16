@@ -21,7 +21,7 @@
     "fs-extra": "5.0.0"
   },
   "devDependencies": {
-    "coveralls": "~3.0.0",
+    "codecov": "~3.0.2",
     "husky": "~0.14.0",
     "lint-staged": "~7.1.0",
     "mocha": "~5.1.0",
@@ -43,11 +43,18 @@
   "preferGlobal": true,
   "_from": "roosevelt-uglify@*",
   "gitHead": "",
+  "nyc": {
+    "reporter": [
+      "html",
+      "text",
+      "lcov"
+    ]
+  },
   "scripts": {
-    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --timeout 25000 --recursive test/unit",
+    "coverage": "nyc mocha --timeout 25000 test/unit",
     "lint": "standard",
     "precommit": "lint-staged",
-    "test": "npm run lint && mocha --timeout 25000 --recursive test/unit"
+    "test": "npm run lint && mocha --timeout 25000 test/unit"
   },
   "lint-staged": {
     "*.js": "standard"
