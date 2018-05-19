@@ -51,6 +51,7 @@
     ]
   },
   "scripts": {
+    "codecov": "./node_modules/.bin/codecov",
     "coverage": "nyc mocha --timeout 25000 test/unit",
     "lint": "standard",
     "precommit": "lint-staged",

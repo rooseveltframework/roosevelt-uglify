@@ -11,6 +11,5 @@ test_script:
   - npm --version
   - cmd: SET PATH=C:\MinGW\bin;%PATH%
   - npm run coverage
-after_test:
-  - node .\node_modules\bin\codecov
+  - npm run codecov
 build: off
