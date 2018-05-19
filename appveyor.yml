@@ -9,5 +9,8 @@ install:
 test_script:
   - node --version
   - npm --version
-  - npm test
+  - cmd: SET PATH=C:\MinGW\bin;%PATH%
+  - npm run coverage
+after_test:
+  - node .\bin\codecov
 build: off
