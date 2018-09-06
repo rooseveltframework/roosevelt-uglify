@@ -23,7 +23,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
   const pathOfcompiledJS = path.join(appDir, 'statics', '.build', 'js', 'a.js')
 
   // options that will be passed into generateTestApp
-  const gOptions = {rooseveltPath: 'roosevelt', method: 'initServer'}
+  const gOptions = { rooseveltPath: 'roosevelt', method: 'initServer' }
 
   beforeEach(function () {
     // start by generating a statics folder in the roosevelt test app directory
@@ -62,13 +62,13 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', () => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === noParamResult.code
-      assert.equal(test, true)
+      assert.strictEqual(test, true)
       testApp.kill('SIGINT')
     })
 
@@ -100,7 +100,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     testApp.on('message', () => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === noParamResult.code
-      assert.equal(test, true)
+      assert.strictEqual(test, true)
       testApp.kill('SIGINT')
     })
 
@@ -111,7 +111,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
 
   it('should make the same compiled js file if a param is passed to Roosevelt-UglifyJS as to if the file and params were passed to UglifyJS', function (done) {
     // JS string that represents the js file that was compiled with the compress set to false
-    const options = {compress: false}
+    const options = { compress: false }
     const compressResult = uglify.minify(test1, options)
 
     // generate the app
@@ -130,13 +130,13 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', (app) => {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === compressResult.code
-      assert.equal(test, true)
+      assert.strictEqual(test, true)
       testApp.kill('SIGINT')
     })
 
@@ -163,7 +163,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should be thrown by the testApp, with a warnings in the string
     testApp.stderr.on('data', (data) => {
@@ -203,7 +203,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should not be thrown by the testApp
     testApp.stderr.on('data', (data) => {
@@ -249,7 +249,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), {'stdio': ['pipe', 'pipe', 'pipe', 'ipc']})
+    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should be thrown by the testApp
     testApp.stderr.on('data', (data) => {
