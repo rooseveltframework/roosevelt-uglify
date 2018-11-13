@@ -69,7 +69,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === noParamResult.code
       assert.strictEqual(test, true)
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
@@ -101,7 +101,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === noParamResult.code
       assert.strictEqual(test, true)
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
@@ -137,7 +137,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
       let test = contentsOfCompiledJS === compressResult.code
       assert.strictEqual(test, true)
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
@@ -177,7 +177,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       if (!warning) {
         assert.fail('app initialized without logging any warnings')
       }
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
@@ -217,7 +217,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       if (warning) {
         assert.fail('roosevelt threw uglify warnings while "showWarnings" was set to false')
       }
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
@@ -263,7 +263,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
       if (!error) {
         assert.fail('the app initialized with no error detected')
       }
-      testApp.kill('SIGINT')
+      testApp.send('stop')
     })
 
     testApp.on('exit', () => {
