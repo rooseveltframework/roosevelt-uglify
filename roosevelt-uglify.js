@@ -1,6 +1,7 @@
 const UglifyJS = require('uglify-es').minify
 const fs = require('fs')
 const path = require('path')
+const logger = app.get('logger')
 
 module.exports = {
   parse: function (app, fileName) {
@@ -27,8 +28,8 @@ module.exports = {
     warnings = result.warnings
 
     if (warnings) {
-      console.warn('⚠️  UglifyJS Warnings:'.bold.yellow)
-      console.warn(warnings)
+      logger.warn('⚠️  UglifyJS Warnings:'.bold.yellow)
+      logger.warn(warnings)
     }
 
     if (errors) {
