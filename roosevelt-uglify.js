@@ -1,7 +1,6 @@
 const UglifyJS = require('uglify-es').minify
 const fs = require('fs')
 const path = require('path')
-const logger = app.get('logger')
 
 module.exports = {
   parse: function (app, fileName) {
@@ -11,6 +10,7 @@ module.exports = {
     let newJs
     let errors
     let warnings
+    const logger = app.get('logger')
 
     // make a copy of the params so the originals aren't modified
     options = JSON.parse(JSON.stringify(options))
@@ -28,7 +28,7 @@ module.exports = {
     warnings = result.warnings
 
     if (warnings) {
-      logger.warn('⚠️  UglifyJS Warnings:'.bold.yellow)
+      logger.warn('⚠️  UglifyJS Warnings:')
       logger.warn(warnings)
     }
 
