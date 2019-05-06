@@ -10,6 +10,7 @@ module.exports = {
     let newJs
     let errors
     let warnings
+    const logger = app.get('logger')
 
     // make a copy of the params so the originals aren't modified
     options = JSON.parse(JSON.stringify(options))
@@ -27,8 +28,8 @@ module.exports = {
     warnings = result.warnings
 
     if (warnings) {
-      console.warn('⚠️  UglifyJS Warnings:'.bold.yellow)
-      console.warn(warnings)
+      logger.warn('⚠️  UglifyJS Warnings:')
+      logger.warn(warnings)
     }
 
     if (errors) {
