@@ -20,7 +20,7 @@
     "uglify-es": "3.3.9"
   },
   "devDependencies": {
-    "c8": "3.4.0",
+    "c8": "5.0.1",
     "codecov": "3.3.0",
     "eslint": "5.16.0",
     "eslint-plugin-mocha": "5.3.0",
