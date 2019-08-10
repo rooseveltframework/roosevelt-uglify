@@ -4,12 +4,8 @@ const path = require('path')
 
 module.exports = {
   parse: function (app, fileName) {
-    let code = fs.readFileSync(path.join(app.get('jsPath'), fileName), 'utf-8')
+    const code = fs.readFileSync(path.join(app.get('jsPath'), fileName), 'utf-8')
     let options = app.get('params').js.compiler.params || {}
-    let result
-    let newJs
-    let errors
-    let warnings
     const logger = app.get('logger')
 
     // make a copy of the params so the originals aren't modified
@@ -20,12 +16,12 @@ module.exports = {
       options.warnings = true
     }
 
-    result = UglifyJS(code, options)
-    newJs = result.code
-    errors = result.error
+    const result = UglifyJS(code, options)
+    const newJs = result.code
+    const errors = result.error
 
     // only populated when warnings option passed
-    warnings = result.warnings
+    const warnings = result.warnings
 
     if (warnings) {
       logger.warn('⚠️  UglifyJS Warnings:')

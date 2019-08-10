@@ -62,12 +62,12 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', () => {
-      let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
-      let test = contentsOfCompiledJS === noParamResult.code
+      const contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
+      const test = contentsOfCompiledJS === noParamResult.code
       assert.strictEqual(test, true)
       testApp.send('stop')
     })
@@ -94,12 +94,12 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', () => {
-      let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
-      let test = contentsOfCompiledJS === noParamResult.code
+      const contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
+      const test = contentsOfCompiledJS === noParamResult.code
       assert.strictEqual(test, true)
       testApp.send('stop')
     })
@@ -130,12 +130,12 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // grab the string data from the compiled js file and compare that to the string of what a normal uglified looks like
     testApp.on('message', (app) => {
-      let contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
-      let test = contentsOfCompiledJS === compressResult.code
+      const contentsOfCompiledJS = fs.readFileSync(pathOfcompiledJS, 'utf8')
+      const test = contentsOfCompiledJS === compressResult.code
       assert.strictEqual(test, true)
       testApp.send('stop')
     })
@@ -163,7 +163,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should be thrown by the testApp, with a warnings in the string
     testApp.stderr.on('data', (data) => {
@@ -203,7 +203,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should not be thrown by the testApp
     testApp.stderr.on('data', (data) => {
@@ -249,7 +249,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
     }, gOptions)
 
     // fork the app and run it as a child process
-    const testApp = fork(path.join(appDir, 'app.js'), { 'stdio': ['pipe', 'pipe', 'pipe', 'ipc'] })
+    const testApp = fork(path.join(appDir, 'app.js'), { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] })
 
     // an error should be thrown by the testApp
     testApp.stderr.on('data', (data) => {
