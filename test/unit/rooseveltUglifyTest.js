@@ -14,7 +14,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
   const appDir = path.join(__dirname, '../app/uglifyJSTest')
 
   // sample JS source string to test the compiler with that has a unusedvar
-  const test1 = `function f(){ var u; return 2 + 3; }`
+  const test1 = 'function f(){ var u; return 2 + 3; }'
 
   // path to where the file with the JS source string written on it will be
   const pathOfStaticJS = path.join(appDir, 'statics', 'js', 'a.js')
@@ -228,7 +228,7 @@ describe('Roosevelt UglifyJS Section Test', function () {
   it('should give a "error" string if there is a massive problem with the code that the program is trying to parse (typo)', function (done) {
     let error
     // JS source script that has a error in it (typo)
-    const errorTest = `function f(){ returbn 2 + 3; }`
+    const errorTest = 'function f(){ returbn 2 + 3; }'
     // path of where the file with this script will be located
     const pathOfErrorStaticJS = path.join(appDir, 'statics', 'js', 'b.js')
     // make this file before the test
