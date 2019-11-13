@@ -1,4 +1,4 @@
-const UglifyJS = require('uglify-es').minify
+const UglifyJS = require('terser').minify
 const fs = require('fs')
 const path = require('path')
 
