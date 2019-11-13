@@ -8,7 +8,7 @@
       "url": "https://github.com/rooseveltframework/roosevelt-uglify/graphs/contributors"
     }
   ],
-  "version": "0.3.1",
+  "version": "0.3.2",
   "files": [
     "roosevelt-uglify.js"
   ],
@@ -21,18 +21,18 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "terser": "4.4.0"
+    "terser": "~4.4.0"
   },
   "devDependencies": {
-    "c8": "~6.0.0",
+    "c8": "~6.0.1",
     "codecov": "~3.6.1",
     "eslint": "~6.6.0",
-    "eslint-plugin-mocha": "~6.2.0",
+    "eslint-plugin-mocha": "~6.2.1",
     "fs-extra": "~8.1.0",
-    "husky": "~3.0.7",
-    "lint-staged": "~9.4.0",
-    "mocha": "~6.2.0",
-    "roosevelt": "~0.14.6",
+    "husky": "~3.0.9",
+    "lint-staged": "~9.4.2",
+    "mocha": "~6.2.2",
+    "roosevelt": "~0.15.1",
     "standard": "~14.3.1"
   },
   "repository": {
@@ -73,5 +73,9 @@
     "hooks": {
       "pre-commit": "lint-staged && eslint ./test/unit"
     }
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/kethinov"
   }
 }
