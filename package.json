@@ -21,7 +21,7 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "uglify-es": "3.3.9"
+    "terser": "4.4.0"
   },
   "devDependencies": {
     "c8": "~6.0.0",

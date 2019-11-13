@@ -7,7 +7,7 @@ const path = require('path')
 const cleanupTestApp = require('../../node_modules/roosevelt/test/util/cleanupTestApp')
 const generateTestApp = require('../../node_modules/roosevelt/test/util/generateTestApp')
 const fork = require('child_process').fork
-const uglify = require('uglify-es')
+const uglify = require('terser')
 
 describe('Roosevelt UglifyJS Section Test', function () {
   // location of the test app

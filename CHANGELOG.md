@@ -2,7 +2,7 @@
 
 ## Next version
 
-- Put your changes here...
+- Replace uglify with terser.
 
 ## 0.3.1 and below
 
